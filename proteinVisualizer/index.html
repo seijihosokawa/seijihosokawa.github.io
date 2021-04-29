@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+            <!-- Bootstrap CSS -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+            <!-- Title -->
+            <title>Protein Visualizer</title>
+                
+            <!-- Navigation Bar Starts -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <!-- Navigation Bar Left Most Title -->
+                <div class="container-fluid">
+                    <a class="navbar-brand">Protein Visualizer</a>
+                </div>
+                <!-- Navigation Bar Slider to change option to combine styles -->
+                <div class="container-fluid">
+                    <div class="form-check form-switch" data-toggle="tooltip" data-placement="bottom" title="Toggle switch to view more than one style at a time">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault" style="color:white;">Combine Styles</label>
+                    </div>
+                </div>
+                <!-- Navigation Bar select option (with dropdown) for style -->
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <select name="" id="style" class="form-select" style="width: 150px;" onchange="loadPDB()" data-toggle="tooltip" data-placement="bottom" title="View the 3D structure in different representations">
+                            <option value="None" selected disabled hidden>Protein Style</option>
+                            <option value="cartoon">Cartoon</option>
+                            <option value="backbone">Backbone</option>
+                            <option value="ball+stick">Ball & Stick</option>
+                            <option value="contact">Contact</option>
+                            <option value="helixorient">Helixorient</option>
+                            <option value="licorice">Licorice</option>
+                            <option value="line">Line</option>
+                            <option value="rocket">Rocket</option>
+                            <option value="rope">Rope</option>
+                            <option value="spacefill">Spacefill</option>
+                            <option value="surface">Surface</option>
+                            <option value="trace">Trace</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Navigation Bar select option (with dropdown) for color scheme -->
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <select name="" id="colorid" class="form-select" style="width: 155px;" onchange="loadPDB()" data-toggle="tooltip" data-placement="bottom" title="View the 3D structure in different color scheme">
+                            <option value="None" selected disabled hidden>Color Scheme </option>
+                            <option value="atomindex">Atomindex</option>
+                            <option value="bfactor">Bfactor</option>
+                            <option value="chainid">Chain ID</option>
+                            <option value="chainindex">Chain Index</option>
+                            <option value="chainname">Chain Name</option>
+                            <option value="densityfit">Density Fit</option>
+                            <option value="element">Element</option>
+                            <option value="entityindex">Entity Index</option>
+                            <option value="entitytype">Entity Type</option>
+                            <option value="geoquality">Geoquality</option>
+                            <option value="hydrophobicity">Hydrophobicity</option>
+                            <option value="modelindex">Model Index</option>
+                            <option value="moleculetype">Molecule Type</option>
+                            <option value="occupancy">Occupancy</option>
+                            <option value="geoquality">Geoquality</option>
+                            <option value="random">Random</option>
+                            <option value="residueindex">Residue Index</option>
+                            <option value="resname">Resname</option>
+                            <option value="sstruc">Sstruc</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Navigation bar button for modal which opens search-->
+                <div class="container-fluid">
+                    <!-- Button trigger modal -->
+                    <span data-toggle="modal" data-target="#searchModal">    
+                        <button type="button" class="btn btn-outline-secondary" style="color:white" data-toggle="tooltip" data-placement="bottom" title="Search for a specific PDB code or upload your own!">
+                            Search or Upload PDB
+                        </button>
+                    </span>
+                </div>
+                <!-- Navigation bar button for dropdown menu-->
+                <div class="container-fluid justify-content-end">
+                    <div class="dropdown">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="color:white">
+                        Dropdown Menu
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
+                          <!-- Screenshot button -->
+                          <li><button type="button" class="dropdown-item" onClick="takeScreenshot()" data-toggle="tooltip" data-placement="left" title="Take screenshot of current view!">Screenshot</button></li>
+                          <!-- Full screen button -->
+                          <li><button type="button" class="dropdown-item" onClick="setFullscreen()" data-toggle="tooltip" data-placement="left" title="Click to view protein in full screen!">Full Screen</button></li>
+                          <!-- Toggle spin button -->
+                          <li><button type="button" class="dropdown-item" onClick="toggleSpin()" data-toggle="tooltip" data-placement="left" title="Click here to make protein spin!">Toggle Spin</button></li>
+                          <!-- Toggle rock button -->
+                          <li><button type="button" class="dropdown-item" onClick="toggleRock()" data-toggle="tooltip" data-placement="left" title="Click here to make protein rock!">Toggle Rock</button></li>
+                          <!-- Toggle info box button -->
+                          <li><button type="button" class="dropdown-item" onClick="toggleInfo()" data-toggle="tooltip" data-placement="left" title="Click here to toggle protein info box!">Toggle Info</button></li>
+                          <!-- Example proteins -->
+                          <li><center>
+                              <select name="" id="exampleProteins" class="form-select" style="width: 150px;" onchange="setExampleProtein()" data-toggle="tooltip" data-placement="bottom" title="Select a protein from our curated list as an example!">
+                                  <option value="None" selected disabled hidden>Examples</option>
+                                  <option value="1A3N">Hemoglobin</option>
+                                  <option value="4PKH">Actin</option>
+                                  <option value="1SA0">Tubulin</option>
+                                  <option value="3LEL">Histones</option>
+                                  <option value="4v5x">3D DNA-origami object</option>
+                                  <option value="3JB9">Yeast Spliceosome</option>
+                                  <option value="6VSB">2019-nCoV Spike Protein</option>
+                                  <option value="1AOI">Nucleosome Core Particle</option>
+                                  <option value="1YAR">Archeabacterial 20S Proteasome</option>
+                                  <option value="1BMF">Bovine F1-Atpase</option>
+                                  <option value="1TUP">P53 Complex With DNA</option>
+                                  <option value="1SVA">Simian Virus Capsid</option>
+                              </select></center>
+                          </li>
+                      </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navigation Bar Ends -->
+                    
+            <!-- Javascript -->
+            <script src="ngl.js" defer></script>
+            <script src="script.js" defer></script>
+    </head>
+    <body>
+        <center>
+            <!-- Draggable element with protein info -->
+            <div class="rounded bg-light border-dark overflow-auto" id="draggableDiv" style="position: absolute;z-index: 9;width: 305px;text-align: left;top: 56px;left: 2px;max-height: 89vh">
+            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+            <div class="container rounded text-dark" id="mydivheader" style="
+                cursor: move;
+                z-index: 9;">
+                <div class="float-sm-left"><strong>PDB Code</strong>: <span id="proteinNameInfo"></span></div>
+                <div class="float-sm-left"><strong>Title</strong>: <span id="proteinTitle"></span></div>
+                <div class="float-sm-left"><strong>Atom Count</strong>: <span id="atomCount"></span></div>
+                <div class="float-sm-left"><strong>Bond Count</strong>: <span id="bondCount"></span></div>
+                <div class="float-sm-left"><strong>Residue Count</strong>: <span id="residueCount"></span></div>
+                <div class="float-sm-left"><strong>Unique Chains</strong>: <span id="chainsCount"></span></div>
+                <div class="float-sm-left"><strong>B-Factor</strong>: <span id="bfactorstat"></span></div>
+                <div class="float-sm-left"><strong>Elements</strong>: <span id="proteinElements"></span></div>
+                <div class="float-sm-left"><strong>Macromolecules</strong>:<ul id="macromoleculesList"></ul></div>
+            </div>
+            </div>
+            <!-- WebGL Canvas, where protein visualization will be viewed and interacted with -->
+            <div id="viewport" style="width:100%; height: 100vh;margin: -56px"></div>
+        </center>
+        <!-- Modal -->
+        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Search modal button for input file-->
+                    <div class="container-fluid justify-content-end" style="margin: 5px">
+                        <input class="form-control" type="file"  id="file-selector"accept=".pdb, .mmcif, .cif, .mcif, .ent, .pqr, .gro, .sdf, .sd, .mol2, .mmtf" onChange="updateCurrentProtein()" data-toggle="tooltip" data-placement="bottom" title="Upload your own PDB file!">
+                    </div>
+                </div>
+              <div class="modal-body" style="max-height: 75vh;
+                  overflow-y: auto;">
+                  <!-- Search modal field -->
+                  <div class="container-fluid justify-content-end" style="margin: 5px">
+                      <form class="d-flex">
+                          <input class="form-control me-2" id="searchbar" type="text" placeholder="Search" aria-label="Search" onclick="loadModalList()" onkeyup="filterSearchFunction()" data-toggle="tooltip" data-placement="bottom" title="Search through our list or use the PDB code and click select to visualize on screen!">
+                      </form>
+                      </div>
+                  <div class="container-fluid justify-content-end">
+                      <div class="list-group" id="protein_list">
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <!-- Search modal select and close buttons -->
+                <button class="btn btn-outline-success" type="button" onclick="searchSelectClicked()" data-dismiss="modal">Select</button>
+                <button type="button" id="closeModalButton" class="btn btn-outline-danger" data-dismiss="modal" onclick="onModalClose()">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal Ends -->
+        <!-- Footer Start -->
+        <footer class="footer fixed-bottom bg-dark text-white">
+            <!-- Footer help button opening an about modal -->
+            <div class="text-center p-2 text-muted"> © 2021 Copyright:
+                <a class="text-center text-white" href="https://github.com/seijihosokawa/protein_visualizer" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="This project can be found on GitHub!">Seiji & Yuuki Hosokawa</a>    
+                <span data-toggle="modal" data-target="#helpModal">          
+                    <svg class="question-circle float-end" data-toggle="tooltip" data-placement="left" title="Click here for more information" data-target="#helpModal" xmlns="http://www.w3.org/2000/svg" color="white" width="20" height="20" fill="currentColor" viewBox="0 0 20 20">  
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                    </svg>
+                </span>
+            </div>
+        </footer>
+        <!-- Footer End -->
+        <!-- Helpful Information Modal -->
+        <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="Help and more info dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+              <div class="modal-header"><h4>Help</h4></div>
+                <div class="modal-body">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              About
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul class="list-unstyled">
+                                    <li>This protein visualizer is maintained and developed by Seiji and Yuuki Hosokawa. This project is full of features and allows for advanced visualization and manipulation of molecular structures.</li><br>
+                                        <li>Our source code can be found in the footer containing a hyperlink to our GitHub repository.</li><br>
+                                        <li>You can fetch proteins from our list in "Search" or upload your own as a local file. The default representation is currently cartoon showing the main backbone atoms of successive residues in unbroken chains which are connected by a smooth trace. Various coloring algorithms can be applied to visualize a specific presentation.</li><br>
+                                        <li>Developing this was great fun and we learned a lot, have a great day!</li>
+                                </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Features
+                            </button>
+                          </h2>
+                          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Every loaded structure can be displayed using a variety of representations that can be combined to create complex molecular views. Multiple representation types are supported:
+                                <ul>
+                                    <li><strong>Cartoon</strong>: secondary structure abstraction</li>
+                                    <li><strong>Backbone</strong>: backbone atom trace</li>
+                                    <li><strong>Ball & Stick</strong>: cylinders and spheres for bonds and atoms</li>
+                                    <li><strong>Line</strong>: simple lines for bonds</li>
+                                    <li><strong>Spacefill</strong>: space-filling spheres for atoms</li>
+                                    <li><strong>Surface</strong>: displays the molecular surface and may take time to load</li>
+                                    <li><a href="https://nglviewer.org/ngl/api/manual/usage/molecular-representations.html#cartoon" target="_blank">Click here for more in depth descriptions of each molecular representations.</a></li>
+                                </ul>
+                                The combine styles toggle will allow for simultaneous viewing of more than one representation. The moveable grey textbox presents important information that will not be included in the screenshot.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                              Feedback
+                            </button>
+                          </h2>
+                          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>Do you need assistance with our tools?</li>
+                                    <li>Do you need a feature?</li>
+                                    <li>Do you want to send a patch to us? </li>
+                                    <li>Did you find a bug?</li>
+                                </ul><a href="https://github.com/seijihosokawa/protein_visualizer/issues" target="_blank" rel="noopener noreferrer">Report issues at GitHub</a> or contact us directly at yh19587@essex.ac.uk
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="modal-footer">
+                  <button type="button" class="btn btn-sm btn-outline-danger" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
+    </body>
+</html>
