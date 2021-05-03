@@ -3,26 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.82.0">
     <title>Seiji Hosokawa</title>
 
 
     <!-- Bootstrap core CSS -->
+    
     <link href="assets/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
 
   </head>
-  <body class="bg-dark">
+  <body style="background: #708090 !important;">
     <header class="site-header py-1">
-      <nav class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="#">About</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Resume</a>
-        <a class="py-2 d-none d-md-inline-block" href="https://github.com/seijihosokawa" target="_blank">GitHub Profile</a>
-        <a class="py-2 d-none d-md-inline-block" href="#">Contact Me</a>
-      </nav>
+        <nav class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="py-2 d-none d-md-inline-block" href="index.html">Home</a>
+            <a class="py-2 d-none d-md-inline-block" href="about.html">About Me</a>
+            <a class="py-2 d-none d-md-inline-block" href="https://github.com/seijihosokawa" target="_blank">GitHub Profile</a>
+            <a class="py-2 d-none d-md-inline-block" href="mailto:seijihosokawa@gmail.com">Contact Me</a>
+        </nav>
     </header>
 
 <main>
@@ -30,90 +30,89 @@
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light" style="color:#f2f2f2;">Seiji Hosokawa's Portfolio</h1>
-        <p class="lead text-muted" style="color:white;">I am currently a Technology Analyst at AIG but love to program and learn. Here are some projects I have worked on, enjoy!</p>
-        <p>
-        <a class="btn btn-outline-secondary" href="https://github.com/seijihosokawa" target="_blank" style="color:white;">GitHub</a>
-        </p>
+        <h1 class="fw-light" style="color:#f2f2f2; font-size:60px !important;">Seiji Hosokawa's Programming Portfolio</h1>
+        <p class="lead" style="color:dark;">I am currently a Technology Analyst at AIG but love to program and learn. Here are some projects I have worked on, enjoy!</p>
       </div>
     </div>
   </section>
-  <div class="container marketing">
+      <div class="b-example-divider"></div>
+        <section class="py-5 container">
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">Protein Visualizer</h2>
+            <p class="lead" style="color:#f2f2f2;">A 3D Protein Visualization tool built using WebGL and Javascript.</p>
+            <a type="button" class="btn btn-outline-success" href="https://github.com/seijihosokawa/protein_visualizer" target="_blank">GitHub Repository</a>
+            <a type="button" class="btn btn-outline-warning" href="https://seijihosokawa.github.io/proteinVisualizer/">View Project!</a>
+          </div>
+          <div class="col-md-5">
+              <img src="assets/proteinVisualizer.png" class="img-fluid" width="100%" height="100%">
+          </div>
+        </div>
+    </section>
+    <div class="b-example-divider"></div>
+    <section class="py-5 container">
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading" style="color:#f2f2f2;text-align: right">Sort Visualizer</h2>
+            <p class="lead" style="color:#f2f2f2; text-align: right;">A Sorting Algorithm Visualizer using P5.js Library, Bootstrap HTML, and Javascript.
+            </p>
+            <a type="button" class="btn btn-outline-warning" href="https://seijihosokawa.github.io/sortVisualizer/" style="float:right;margin:2px">View Project!</a>
+            <a type="button" class="btn btn-outline-success" href="https://github.com/seijihosokawa/sortVisualizer" target="_blank" style="float:right;margin:2px">GitHub Repository</a>
+          </div>
+          <div class="col-md-5 order-md-1">
+              <img src="assets/sort.png" class="img-fluid" width="100%" height="100%">
+          </div>
+        </div>
+    </section>
 
-    <!-- START THE FEATURETTES -->
+    <div class="b-example-divider"></div>
 
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">Protein Visualizer</h2>
-        <p class="lead" style="color:#f2f2f2;">A 3D Protein Visualization tool built using WebGL and Javascript.</p>
-        <a type="button" class="btn btn-outline-success" href="https://github.com/seijihosokawa/protein_visualizer" target="_blank">GitHub Repository</a>
-        <a type="button" class="btn btn-outline-warning" href="https://seijihosokawa.github.io/proteinVisualizer/">View Project!</a>
-      </div>
-      <div class="col-md-5">
-          <img src="assets/proteinVisualizer.png" class="img-fluid" width="100%" height="100%">
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading" style="color:#f2f2f2;text-align: right">Sort Visualizer</h2>
-        <p class="lead" style="color:#f2f2f2; text-align: right;">A Sorting Algorithm Visualizer using P5.js Library, Bootstrap HTML, and Javascript.
-        </p>
-        <a type="button" class="btn btn-outline-success" href="https://github.com/seijihosokawa/sortVisualizer" target="_blank" style="float:right;margin:2px">GitHub Repository</a>
-        <a type="button" class="btn btn-outline-warning" href="https://seijihosokawa.github.io/sortVisualizer/" style="float:right;margin:2px">View Project!</a>
-      </div>
-      <div class="col-md-5 order-md-1">
-          <img src="assets/sort.png" class="img-fluid" width="100%" height="100%">
-      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">Sudoku Solver</h2>
-        <p class="lead" style="color:#f2f2f2;">A Sudoku solving app created with Python using the Tkinter Library.</p>
-        <a type="button" class="btn btn-outline-success" href="https://github.com/seijihosokawa/sudokuSolver" target="_blank">GitHub Repository</a>
-      </div>
-      <div class="col-md-5">
-          <img src="assets/endgame.png" class="img-fluid" width="100%" height="100%">
-      </div>
-    </div>
+    <section class="py-5 container">
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">Sudoku Solver</h2>
+            <p class="lead" style="color:#f2f2f2;">A Sudoku solving app created with Python using the Tkinter Library.</p>
+            <a type="button" class="btn btn-outline-success" href="https://github.com/seijihosokawa/sudokuSolver" target="_blank">GitHub Repository</a>
+          </div>
+          <div class="col-md-5">
+              <img src="assets/endgame.png" class="img-fluid" width="100%" height="100%">
+          </div>
+        </div>
+    </section>
     
-    <hr class="featurette-divider">
+    <div class="b-example-divider"></div>
     
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading" style="color:#f2f2f2;text-align: right">To Do List App</h2>
-        <p class="lead" style="color:#f2f2f2; text-align: right;">This is a To Do List App using the Flask web framework with Python backend, SQLite Database and Bootstrap HTML.
-        </p>
-        <a type="button" class="btn btn-outline-success" href="https://github.com/seijihosokawa/ToDoList" target="_blank" style="float:right">GitHub Repository</a>
-      </div>
-      <div class="col-md-5 order-md-1">
-          <img src="assets/todolist.png" class="img-fluid" width="100%" height="100%">
-      </div>
-    </div>
+    <section class="py-5 container">
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading" style="color:#f2f2f2;text-align: right">To Do List App</h2>
+            <p class="lead" style="color:#f2f2f2; text-align: right;">This is a To Do List App using the Flask web framework with Python backend, SQLite Database and Bootstrap HTML.
+            </p>
+            <a type="button" class="btn btn-outline-success" href="https://github.com/seijihosokawa/ToDoList" target="_blank" style="float:right">GitHub Repository</a>
+          </div>
+          <div class="col-md-5 order-md-1">
+              <img src="assets/todolist.png" class="img-fluid" width="100%" height="100%">
+          </div>
+        </div>
+    </section>
 
-    <hr class="featurette-divider">
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading" style="color:#f2f2f2;">Tic-Tac-Toe</h2>
-        <p class="lead" style="color:#f2f2f2;">Tic-Tac-Toe game with an option to play against an AI (using the Minimax algorithm). Built mainly with Javascript using Bootstrap HTML, and CSS.
-        </p>
-        <a type="button" class="btn btn-outline-success" href="https://github.com/seijihosokawa/tictactoe" target="_blank">GitHub Repository</a>
-        <a type="button" class="btn btn-outline-warning" href="https://seijihosokawa.github.io/tictactoe/">View Project!</a>
-      </div>
-      <div class="col-md-5">
-          <img src="assets/tictactoe.png" class="img-fluid" width="100%" height="100%">
+    <div class="b-example-divider"></div>
 
-      </div>
-    </div>
+    <section class="py-5 container">
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading" style="color:#f2f2f2;">Tic-Tac-Toe</h2>
+            <p class="lead" style="color:#f2f2f2;">Tic-Tac-Toe game with an option to play against an AI (using the Minimax algorithm). Built mainly with Javascript using Bootstrap HTML, and CSS.
+            </p>
+            <a type="button" class="btn btn-outline-success" href="https://github.com/seijihosokawa/tictactoe" target="_blank">GitHub Repository</a>
+            <a type="button" class="btn btn-outline-warning" href="https://seijihosokawa.github.io/tictactoe/">View Project!</a>
+          </div>
+          <div class="col-md-5">
+              <img src="assets/tictactoe.png" class="img-fluid" width="100%" height="100%">
 
-    <hr class="featurette-divider">
+          </div>
+        </div>
+    </section>
 
     <!-- /END THE FEATURETTES -->
 
@@ -126,13 +125,13 @@
     <p class="float-end mb-1">
       <a href="#" class="btn btn-outline-primary">Back to top</a>
     </p>
-    <a href="https://github.com/seijihosokawa" rel="noopener" target="_blank" title="GitHub">
-                  <svg version="1.1" width="50px" height="50px" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+    <a href="https://github.com/seijihosokawa" rel="noopener" target="_blank" title="GitHub" style="text-decoration:none;">
+                  <svg version="1.1" width="55px" height="55px" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                     <path d="M896 128q209 0 385.5 103t279.5 279.5 103 385.5q0 251-146.5 451.5t-378.5 277.5q-27 5-40-7t-13-30q0-3 .5-76.5t.5-134.5q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-119-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-85-13.5q-45 113-8 204-79 87-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-39 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 88.5t.5 54.5q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103zm-477 1103q3-7-7-12-10-3-13 2-3 7 7 12 9 6 13-2zm31 34q7-5-2-16-10-9-16-3-7 5 2 16 10 10 16 3zm30 45q9-7 0-19-8-13-17-6-9 5 0 18t17 7zm42 42q8-8-4-19-12-12-20-3-9 8 4 19 12 12 20 3zm57 25q3-11-13-16-15-4-19 7t13 15q15 6 19-6zm63 5q0-13-17-11-16 0-16 11 0 13 17 11 16 0 16-11zm58-10q-2-11-18-9-16 3-14 15t18 8 14-14z"></path>
                   </svg>
                 </a>
-    <a href="https://www.linkedin.com/in/seiji-hosokawa-1248251a2/" rel="noopener" target="_blank" title="LinkedIn">
-                  <svg version="1.1" width="50px" height="50px" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+    <a href="https://www.linkedin.com/in/seiji-hosokawa-1248251a2/" rel="noopener" target="_blank" title="LinkedIn"  style="text-decoration:none;">
+                  <svg version="1.1" width="55px" height="55px" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
                     <path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"></path>
                   </svg>
                 </a>
