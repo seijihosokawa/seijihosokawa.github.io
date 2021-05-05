@@ -6,25 +6,50 @@
  */
 
 body, #images, #images a {
-   font-family: 'Nimbus Sans D OT Light';
+   font: 'roboto';
+   background: #484f58;
    color:#f2f2f2;
 }
-@font-face {
-    font-family: Nimbus Sans D OT Light;
-    src: url("assets/Nimbus-Sans-D-OT-Light_32752") format("opentype");
+a.py-2.d-none.d-md-inline-block
+{
+    position: relative;
 }
 
+a.py-2.d-none.d-md-inline-block:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #FFF;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+a.py-2.d-none.d-md-inline-block:hover:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
 /*
  * Custom site header
  */
+.featurette-heading {
+    font-weight: 500 !important;
+}
+.fw-light{
+    font-weight: bold !important;
 
+}
 .site-header {
-  background-color: rgba(0, 0, 0, .85);
+  background-color: #2d333b;
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 }
 .site-header a {
   color: #ded8d7;
+  font-weight: 450;
   transition: color .15s ease-in-out;
   text-decoration: none;
 }
@@ -32,17 +57,22 @@ body, #images, #images a {
   color: #fff;
 }
 
+.footer-buttons{
+    fill: #f2f2f2;
+}
 /*
  * Custom buttons
  */
 .btn-outline-success{
-    color:#20c997;
-    border: 1px solid #20c997;
+    color:#32CD32;
+    border-color: #32CD32;
 }
 .btn-outline-success:hover{
-    color:black;
+    color:white;
 }
-
+.btn-outline-warning:hover{
+    color:white;
+}
 /*
  * Featurettes
  */
