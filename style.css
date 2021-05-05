@@ -10,12 +10,17 @@ body, #images, #images a {
    background: #484f58;
    color:#f2f2f2;
 }
-a.py-2.d-none.d-md-inline-block
+/*
+ * Styling for nav bar
+ */
+.nav-link:hover{
+    color:white !important;
+}
+a.nav-link
 {
     position: relative;
 }
-
-a.py-2.d-none.d-md-inline-block:before {
+a.nav-link:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -28,7 +33,7 @@ a.py-2.d-none.d-md-inline-block:before {
   transition: all 0.3s ease-in-out;
 }
 
-a.py-2.d-none.d-md-inline-block:hover:before {
+a.nav-link:hover:before {
   visibility: visible;
   transform: scaleX(1);
 }
@@ -41,20 +46,6 @@ a.py-2.d-none.d-md-inline-block:hover:before {
 .fw-light{
     font-weight: bold !important;
 
-}
-.site-header {
-  background-color: #2d333b;
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-}
-.site-header a {
-  color: #ded8d7;
-  font-weight: 450;
-  transition: color .15s ease-in-out;
-  text-decoration: none;
-}
-.site-header a:hover {
-  color: #fff;
 }
 
 .footer-buttons{
