@@ -5,6 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
             <!-- Bootstrap CSS -->
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+            <link href="style.css" rel="stylesheet">
+
             <!-- Title -->
             <title>Protein Visualizer</title>
                 
@@ -72,8 +74,8 @@
                 <div class="container-fluid">
                     <!-- Button trigger modal -->
                     <span data-toggle="modal" data-target="#searchModal">    
-                        <button type="button" class="btn btn-outline-secondary" style="color:white" data-toggle="tooltip" data-placement="bottom" title="Search for a specific PDB code or upload your own!">
-                            Search or Upload PDB
+                        <button type="button" class="btn btn-outline-secondary" style="color:white" data-toggle="tooltip" data-placement="bottom" title="Search for a specific PDB code or upload your own file!">
+                            Search or Upload Protein
                         </button>
                     </span>
                 </div>
@@ -85,18 +87,24 @@
                       </button>
                       <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
                           <!-- Screenshot button -->
-                          <li><button type="button" class="dropdown-item" onClick="takeScreenshot()" data-toggle="tooltip" data-placement="left" title="Take screenshot of current view!">Screenshot</button></li>
+                          <li><a type="button" class="dropdown-item" onClick="takeScreenshot()" data-toggle="tooltip" data-placement="left" title="Take screenshot of current view!">Screenshot</a></li>
                           <!-- Full screen button -->
-                          <li><button type="button" class="dropdown-item" onClick="setFullscreen()" data-toggle="tooltip" data-placement="left" title="Click to view protein in full screen!">Full Screen</button></li>
+                          <li><a type="button" class="dropdown-item" onClick="setFullscreen()" data-toggle="tooltip" data-placement="left" title="Click to view protein in full screen!">Full Screen</a></li>
+                          <!-- Orient button -->
+                          <li><a type="button" id="setOrientation" class="dropdown-item" onClick="setOrientation()" data-toggle="tooltip" data-placement="left" title="Click here to orient the protein!">Center Protein</a></li>
                           <!-- Toggle spin button -->
-                          <li><button type="button" class="dropdown-item" onClick="toggleSpin()" data-toggle="tooltip" data-placement="left" title="Click here to make protein spin!">Toggle Spin</button></li>
+                          <li><a type="button" id="toggleSpin" class="dropdown-item" onClick="toggleSpin()" data-toggle="tooltip" data-placement="left" title="Click here to make protein spin!">Toggle Spin</a></li>
                           <!-- Toggle rock button -->
-                          <li><button type="button" class="dropdown-item" onClick="toggleRock()" data-toggle="tooltip" data-placement="left" title="Click here to make protein rock!">Toggle Rock</button></li>
+                          <li><a type="button" id="toggleRock" class="dropdown-item" onClick="toggleRock()" data-toggle="tooltip" data-placement="left" title="Click here to make protein rock!">Toggle Rock</a></li>
                           <!-- Toggle info box button -->
-                          <li><button type="button" class="dropdown-item" onClick="toggleInfo()" data-toggle="tooltip" data-placement="left" title="Click here to toggle protein info box!">Toggle Info</button></li>
+                          <li><a type="button" id="toggleInfo" class="dropdown-item" onClick="toggleInfo()" data-toggle="tooltip" data-placement="left" title="Click here to toggle protein info box!">Untoggle Info</a></li>
+                          <!-- Toggle info box button -->
+                          <li><a type="button" class="dropdown-item" onClick="clearStage()" data-toggle="tooltip" data-placement="left" title="Click here to clear the screen!">Clear Stage</a></li>
+                          <!-- Help button that will redirect to readme page with directions -->
+                          <li><a type="button" class="dropdown-item" href="https://github.com/seijihosokawa/protein_visualizer/blob/master/README.md" target="_blank" data-toggle="tooltip" data-placement="left" title="Click here to get help and read a tutorial!">Help</a></li>
                           <!-- Example proteins -->
                           <li><center>
-                              <select name="" id="exampleProteins" class="form-select" style="width: 150px;" onchange="setExampleProtein()" data-toggle="tooltip" data-placement="bottom" title="Select a protein from our curated list as an example!">
+                              <select name="" id="exampleProteins" class="form-select" style="width: 150px;margin: 2px;" onchange="setExampleProtein()" data-toggle="tooltip" data-placement="bottom" title="Select a protein from our curated list as an example!">
                                   <option value="None" selected disabled hidden>Examples</option>
                                   <option value="1A3N">Hemoglobin</option>
                                   <option value="4PKH">Actin</option>
@@ -106,10 +114,12 @@
                                   <option value="3JB9">Yeast Spliceosome</option>
                                   <option value="6VSB">2019-nCoV Spike Protein</option>
                                   <option value="1AOI">Nucleosome Core Particle</option>
-                                  <option value="1YAR">Archeabacterial 20S Proteasome</option>
+                                  <option value="1YAR">Archeabacterial Proteasome</option>
                                   <option value="1BMF">Bovine F1-Atpase</option>
                                   <option value="1TUP">P53 Complex With DNA</option>
                                   <option value="1SVA">Simian Virus Capsid</option>
+                                  <option value="2A07">FOXP2 Bound To DNA</option>
+                                  <option value="1MFR">Bullfrog M Ferritin</option>
                               </select></center>
                           </li>
                       </ul>
@@ -125,7 +135,7 @@
     <body>
         <center>
             <!-- Draggable element with protein info -->
-            <div class="rounded bg-light border-dark overflow-auto" id="draggableDiv" style="position: absolute;z-index: 9;width: 305px;text-align: left;top: 56px;left: 2px;max-height: 89vh">
+            <div class="rounded bg-light border-dark overflow-auto" id="draggableDiv">
             <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
             <div class="container rounded text-dark" id="mydivheader" style="
                 cursor: move;
@@ -138,6 +148,7 @@
                 <div class="float-sm-left"><strong>Unique Chains</strong>: <span id="chainsCount"></span></div>
                 <div class="float-sm-left"><strong>B-Factor</strong>: <span id="bfactorstat"></span></div>
                 <div class="float-sm-left"><strong>Elements</strong>: <span id="proteinElements"></span></div>
+                <div class="float-sm-left"><strong>Style(s)</strong>: <span id="stlyeSelected"></span></div>
                 <div class="float-sm-left"><strong>Macromolecules</strong>:<ul id="macromoleculesList"></ul></div>
             </div>
             </div>
@@ -151,7 +162,7 @@
                 <div class="modal-header">
                     <!-- Search modal button for input file-->
                     <div class="container-fluid justify-content-end" style="margin: 5px">
-                        <input class="form-control" type="file"  id="file-selector"accept=".pdb, .mmcif, .cif, .mcif, .ent, .pqr, .gro, .sdf, .sd, .mol2, .mmtf" onChange="updateCurrentProtein()" data-toggle="tooltip" data-placement="bottom" title="Upload your own PDB file!">
+                        <input class="form-control" type="file"  id="file-selector"accept=".pdb, .mmcif, .cif, .mcif, .ent, .pqr, .gro, .sdf, .sd, .mol2, .mmtf" onChange="updateCurrentProtein()" data-toggle="tooltip" data-placement="bottom" title="Upload your own file!">
                     </div>
                 </div>
               <div class="modal-body" style="max-height: 75vh;
@@ -208,7 +219,7 @@
                                 <ul class="list-unstyled">
                                     <li>This protein visualizer is maintained and developed by Seiji and Yuuki Hosokawa. This project is full of features and allows for advanced visualization and manipulation of molecular structures.</li><br>
                                         <li>Our source code can be found in the footer containing a hyperlink to our GitHub repository.</li><br>
-                                        <li>You can fetch proteins from our list in "Search" or upload your own as a local file. The default representation is currently cartoon showing the main backbone atoms of successive residues in unbroken chains which are connected by a smooth trace. Various coloring algorithms can be applied to visualize a specific presentation.</li><br>
+                                        <li>You can fetch proteins from our list in "Search" or upload your own as a local file. The default representation is currently set to cartoon showing the main backbone atoms of successive residues in unbroken chains which are connected by a smooth trace. Various coloring algorithms can be applied to visualize a specific presentation.</li><br>
                                         <li>Developing this was great fun and we learned a lot, have a great day!</li>
                                 </ul>
                             </div>
@@ -224,12 +235,12 @@
                             <div class="accordion-body">
                                 Every loaded structure can be displayed using a variety of representations that can be combined to create complex molecular views. Multiple representation types are supported:
                                 <ul>
-                                    <li><strong>Cartoon</strong>: secondary structure abstraction</li>
-                                    <li><strong>Backbone</strong>: backbone atom trace</li>
-                                    <li><strong>Ball & Stick</strong>: cylinders and spheres for bonds and atoms</li>
-                                    <li><strong>Line</strong>: simple lines for bonds</li>
-                                    <li><strong>Spacefill</strong>: space-filling spheres for atoms</li>
-                                    <li><strong>Surface</strong>: displays the molecular surface and may take time to load</li>
+                                    <li><strong>Cartoon</strong>: Secondary structure abstraction</li>
+                                    <li><strong>Backbone</strong>: Backbone atom trace</li>
+                                    <li><strong>Ball & Stick</strong>: Cylinders and spheres for bonds and atoms</li>
+                                    <li><strong>Line</strong>: Simple lines for bonds</li>
+                                    <li><strong>Spacefill</strong>: Space-filling spheres for atoms</li>
+                                    <li><strong>Surface</strong>: Displays the molecular surface and may take time to load</li>
                                     <li><a href="https://nglviewer.org/ngl/api/manual/usage/molecular-representations.html#cartoon" target="_blank">Click here for more in depth descriptions of each molecular representations.</a></li>
                                 </ul>
                                 The combine styles toggle will allow for simultaneous viewing of more than one representation. The moveable grey textbox presents important information that will not be included in the screenshot.
