@@ -5,7 +5,7 @@
  * Custom font
  */
 
-body, #images, #images a {
+body, #images a {
    font: 'roboto';
    background: #484f58;
    color:#f2f2f2;
