@@ -2,7 +2,7 @@
   max-width: 90%;
 }
 /*
- * Custom font
+ * Changing font and background color
  */
 
 body, #images a {
@@ -68,7 +68,6 @@ a.nav-link:hover:before {
  * Featurettes
  */
 
-/* Thin out the marketing headings */
 .featurette-heading {
   font-weight: 300;
   line-height: 1;
@@ -84,11 +83,24 @@ a.nav-link:hover:before {
   border-width: 1px 0;
   box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
 }
+/*
+ Chaning modal background and eliminating borders
+ */
+.modal-content{
+    background-color: transparent;
+    border: none;
+}
+.modal-header{
+    padding: none;
+    border-bottom: none;
+}
+.btn-close{
+    background-color: white !important;
+}
 
 @media (min-width: 992px) {
   .rounded-lg-3 { border-radius: .3rem; }
 }
-
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
