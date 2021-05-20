@@ -98,6 +98,13 @@ a.nav-link:hover:before {
     background-color: white !important;
 }
 
+/*
+ * Added pointer cursor when hovering image
+ */
+.img-fluid{
+    cursor: pointer;
+}
+
 @media (min-width: 992px) {
   .rounded-lg-3 { border-radius: .3rem; }
 }
