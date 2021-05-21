@@ -9,7 +9,13 @@
 
             <!-- Title -->
             <title>Protein Visualizer</title>
-                
+                    
+            <!-- Javascript -->
+            <script src="ngl.js" defer></script>
+            <script src="script.js" defer></script>
+    </head>
+    <body>
+        <header>
             <!-- Navigation Bar Starts -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <!-- Navigation Bar Left Most Title -->
@@ -48,8 +54,8 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <select name="" id="colorid" class="form-select" style="width: 155px;" onchange="loadPDB()" data-toggle="tooltip" data-placement="bottom" title="View the 3D structure in different color scheme">
                             <option value="None" selected disabled hidden>Color Scheme </option>
-                            <option value="atomindex">Atomindex</option>
                             <option value="bfactor">Bfactor</option>
+                            <option value="atomindex">Atomindex</option>
                             <option value="chainid">Chain ID</option>
                             <option value="chainindex">Chain Index</option>
                             <option value="chainname">Chain Name</option>
@@ -73,7 +79,7 @@
                 <!-- Navigation bar button for modal which opens search-->
                 <div class="container-fluid">
                     <!-- Button trigger modal -->
-                    <span data-toggle="modal" data-target="#searchModal">    
+                    <span data-toggle="modal" data-target="#searchModal">
                         <button type="button" class="btn btn-outline-secondary" style="color:white" data-toggle="tooltip" data-placement="bottom" title="Search for a specific PDB code or upload your own file!">
                             Search or Upload Protein
                         </button>
@@ -120,6 +126,7 @@
                                   <option value="1SVA">Simian Virus Capsid</option>
                                   <option value="2A07">FOXP2 Bound To DNA</option>
                                   <option value="1MFR">Bullfrog M Ferritin</option>
+                                  <option value="1HIG">Human Interfernon-gamma</option>
                               </select></center>
                           </li>
                       </ul>
@@ -127,12 +134,7 @@
                 </div>
             </nav>
             <!-- Navigation Bar Ends -->
-                    
-            <!-- Javascript -->
-            <script src="ngl.js" defer></script>
-            <script src="script.js" defer></script>
-    </head>
-    <body>
+        </header>
         <center>
             <!-- Draggable element with protein info -->
             <div class="rounded bg-light border-dark overflow-auto" id="draggableDiv">
