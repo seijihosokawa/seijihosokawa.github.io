@@ -1,0 +1,372 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Crimes Data API",
+    "description": "This is a Crimes data API that I have developed.\n",
+    "contact": {
+      "email": "seijihosokawadev@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/seijih/crimes/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "tags": [
+    {
+      "name": "SRS",
+      "description": "Summary Reporting System",
+      "externalDocs": {
+        "description": "link",
+        "url": "https://crime-data-explorer.app.cloud.gov/pages/downloads"
+      }
+    }
+  ],
+  "paths": {
+    "/summary": {
+      "get": {
+        "tags": [
+          "SRS"
+        ],
+        "summary": "Get all summary data",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The numbers of items to return (200 if none specified)",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Summary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/summary/years": {
+      "get": {
+        "tags": [
+          "SRS"
+        ],
+        "summary": "Get list of years included in data",
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/summary/years/{year}": {
+      "get": {
+        "tags": [
+          "SRS"
+        ],
+        "summary": "Get specific years",
+        "operationId": "getSpecificYear",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "path",
+            "description": "year to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/summary/years/{year_start}/{year_end}": {
+      "get": {
+        "tags": [
+          "SRS"
+        ],
+        "summary": "Get specific year range",
+        "operationId": "getYearRange",
+        "parameters": [
+          {
+            "name": "year_start",
+            "in": "path",
+            "description": "year to start",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "year_end",
+            "in": "path",
+            "description": "year to end",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/summary/years-total": {
+      "get": {
+        "tags": [
+          "SRS"
+        ],
+        "summary": "Get total crimes each year",
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/summary/years-total/{year}": {
+      "get": {
+        "tags": [
+          "SRS"
+        ],
+        "summary": "Get specific year",
+        "operationId": "getSpecificYearTotal",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "path",
+            "description": "year to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/summary/years-total/{year_start}/{year_end}": {
+      "get": {
+        "tags": [
+          "SRS"
+        ],
+        "summary": "Get specific year range for entire United States",
+        "operationId": "getSpecificYearRange",
+        "parameters": [
+          {
+            "name": "year_start",
+            "in": "path",
+            "description": "year to start",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "year_end",
+            "in": "path",
+            "description": "year to end",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/summary/states": {
+      "get": {
+        "tags": [
+          "SRS"
+        ],
+        "summary": "Get list of states abbreviations",
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/summary/state/{id}": {
+      "get": {
+        "tags": [
+          "SRS"
+        ],
+        "summary": "Get specific state using state abbreviation",
+        "operationId": "getSpecificState",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "year to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/summary/state-list": {
+      "get": {
+        "tags": [
+          "SRS"
+        ],
+        "summary": "List states full name",
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/summary/crimes": {
+      "get": {
+        "tags": [
+          "SRS"
+        ],
+        "summary": "List crimes being tracked",
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Summary": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "status",
+            "example": 200
+          },
+          "year": {
+            "type": "integer",
+            "description": "year",
+            "example": 2001
+          },
+          "population": {
+            "type": "integer",
+            "description": "year",
+            "example": 1003002
+          },
+          "violent_crime": {
+            "type": "integer",
+            "description": "the amount of violent crime cases",
+            "example": 133002
+          },
+          "homicide": {
+            "type": "integer",
+            "description": "the amount of homicide crime cases",
+            "example": 12002
+          },
+          "rape": {
+            "type": "integer",
+            "description": "the amount of rape crime cases",
+            "example": 1873
+          },
+          "robbery": {
+            "type": "integer",
+            "description": "the amount of robbery crime cases",
+            "example": 80302
+          },
+          "aggravated_assault": {
+            "type": "integer",
+            "description": "the amount of aggravated assault crime cases",
+            "example": 13002
+          },
+          "property_crime": {
+            "type": "integer",
+            "description": "the amount of property crime cases",
+            "example": 1002
+          },
+          "burglary": {
+            "type": "integer",
+            "description": "the amount of burglary crime cases",
+            "example": 2032
+          },
+          "larceny": {
+            "type": "integer",
+            "description": "the amount of larceny crime cases",
+            "example": 178
+          },
+          "motor_vehicle_theft": {
+            "type": "integer",
+            "description": "the amount of motor vehicle theft cases",
+            "example": 180
+          },
+          "state_abbr": {
+            "type": "string",
+            "description": "the amount of motor vehicle theft cases",
+            "example": "CT"
+          },
+          "state_name": {
+            "type": "string",
+            "description": "the amount of motor vehicle theft cases",
+            "example": "Connecticut"
+          }
+        }
+      }
+    }
+  }
+}
