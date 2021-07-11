@@ -1,4 +1,6 @@
-
+html {
+  scroll-behavior: smooth;
+ }
 /*
  * Styling for nav bar
  */
@@ -21,6 +23,10 @@
 #nav-link:hover:before {
   visibility: visible;
   transform: scaleX(1);
+}
+
+#arrow {
+ text-decoration: none;
 }
 
 body{
